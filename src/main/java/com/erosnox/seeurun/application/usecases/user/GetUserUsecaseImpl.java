@@ -14,7 +14,7 @@ import com.erosnox.seeurun.application.utils.UserUtils;
 import java.util.Objects;
 import java.util.UUID;
 
-public class GetUserUsecaseImpl implements GetUserUsecase {
+public final class GetUserUsecaseImpl implements GetUserUsecase {
     private final UserRepository repository;
 
     public GetUserUsecaseImpl(UserRepository repository) {

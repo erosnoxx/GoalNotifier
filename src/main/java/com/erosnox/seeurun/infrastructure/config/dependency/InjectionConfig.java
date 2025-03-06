@@ -1,13 +1,22 @@
 package com.erosnox.seeurun.infrastructure.config.dependency;
 
+import com.erosnox.seeurun.application.contracts.gateways.GoalRepository;
 import com.erosnox.seeurun.application.contracts.gateways.UserRepository;
 import com.erosnox.seeurun.application.contracts.services.CryptService;
 import com.erosnox.seeurun.application.contracts.services.LoginService;
 import com.erosnox.seeurun.application.contracts.usecases.auth.LoginUsecase;
 import com.erosnox.seeurun.application.contracts.usecases.auth.RegisterUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.CreateGoalUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.GetAllGoalsUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.GetGoalUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.ToggleCompletedUsecase;
 import com.erosnox.seeurun.application.contracts.usecases.user.*;
 import com.erosnox.seeurun.application.usecases.auth.LoginUsecaseImpl;
 import com.erosnox.seeurun.application.usecases.auth.RegisterUsecaseImpl;
+import com.erosnox.seeurun.application.usecases.goal.CreateGoalUsecaseImpl;
+import com.erosnox.seeurun.application.usecases.goal.GetAllGoalsUsecaseImpl;
+import com.erosnox.seeurun.application.usecases.goal.GetGoalUsecaseImpl;
+import com.erosnox.seeurun.application.usecases.goal.ToggleCompletedUsecaseImpl;
 import com.erosnox.seeurun.application.usecases.user.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -59,5 +68,25 @@ public class InjectionConfig {
     @Bean
     public GrantAdminRoleUsecase grantAdminRoleUsecase(UserRepository repository) {
         return new GrantAdminRoleUsecaseImpl(repository);
+    }
+
+    @Bean
+    public CreateGoalUsecase createGoalUsecase(GoalRepository repository) {
+        return new CreateGoalUsecaseImpl(repository);
+    }
+
+    @Bean
+    public GetAllGoalsUsecase getAllGoalsUsecase(GoalRepository repository) {
+        return new GetAllGoalsUsecaseImpl(repository);
+    }
+
+    @Bean
+    public ToggleCompletedUsecase toggleCompletedUsecase(GoalRepository repository) {
+        return new ToggleCompletedUsecaseImpl(repository);
+    }
+
+    @Bean
+    public GetGoalUsecase getGoalUsecase(GoalRepository repository) {
+        return new GetGoalUsecaseImpl(repository);
     }
 }

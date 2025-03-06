@@ -2,9 +2,7 @@ package com.erosnox.seeurun.infrastructure.persistence.entities;
 
 import com.erosnox.seeurun.application.enums.RolesEnum;
 import com.erosnox.seeurun.infrastructure.persistence.entities.common.BaseJpaEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +27,9 @@ public class UserJpaEntity extends BaseJpaEntity<UUID> implements UserDetails {
     private RolesEnum role;
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<GoalJpaEntity> goals;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

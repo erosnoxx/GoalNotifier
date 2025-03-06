@@ -5,7 +5,7 @@ import com.erosnox.seeurun.application.contracts.usecases.auth.LoginUsecase;
 import com.erosnox.seeurun.application.models.request.auth.LoginRequest;
 import com.erosnox.seeurun.application.models.response.auth.LoginResponse;
 
-public class LoginUsecaseImpl implements LoginUsecase {
+public final class LoginUsecaseImpl implements LoginUsecase {
     private final LoginService loginService;
 
     public LoginUsecaseImpl(LoginService loginService) {

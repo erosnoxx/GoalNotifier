@@ -59,4 +59,6 @@ public class UserEntity extends BaseEntity<UUID> {
     public boolean isActive() {
         return isActive;
     }
+
+
 }

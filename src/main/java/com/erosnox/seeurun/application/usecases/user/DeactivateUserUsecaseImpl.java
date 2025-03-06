@@ -9,7 +9,7 @@ import com.erosnox.seeurun.application.utils.UserUtils;
 
 import java.util.UUID;
 
-public class DeactivateUserUsecaseImpl implements DeactivateUserUsecase {
+public final class DeactivateUserUsecaseImpl implements DeactivateUserUsecase {
     private final UserRepository repository;
 
     public DeactivateUserUsecaseImpl(UserRepository repository) {

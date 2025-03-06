@@ -6,7 +6,7 @@ import com.erosnox.seeurun.application.exceptions.BadRequestException;
 
 import java.util.UUID;
 
-public class DeleteUserUsecaseImpl implements DeleteUserUsecase {
+public final class DeleteUserUsecaseImpl implements DeleteUserUsecase {
     private final UserRepository repository;
 
     public DeleteUserUsecaseImpl(UserRepository repository) {

@@ -8,7 +8,7 @@ import com.erosnox.seeurun.application.mapper.UserMapper;
 import com.erosnox.seeurun.application.models.request.auth.RegisterRequest;
 import com.erosnox.seeurun.application.models.response.auth.RegisterResponse;
 
-public class RegisterUsecaseImpl implements RegisterUsecase {
+public final class RegisterUsecaseImpl implements RegisterUsecase {
     private final UserRepository repository;
     private final CryptService cryptService;
 

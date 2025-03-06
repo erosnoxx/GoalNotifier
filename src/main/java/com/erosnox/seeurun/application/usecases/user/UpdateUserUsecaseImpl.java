@@ -12,7 +12,7 @@ import com.erosnox.seeurun.application.utils.UserUtils;
 
 import java.util.UUID;
 
-public class UpdateUserUsecaseImpl implements UpdateUserUsecase {
+public final class UpdateUserUsecaseImpl implements UpdateUserUsecase {
     private final UserRepository repository;
     private final CryptService cryptService;
 

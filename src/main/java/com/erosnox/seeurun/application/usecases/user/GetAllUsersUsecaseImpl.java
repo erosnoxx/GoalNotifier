@@ -8,7 +8,7 @@ import com.erosnox.seeurun.application.models.response.user.UserResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GetAllUsersUsecaseImpl implements GetAllUsersUsecase {
+public final class GetAllUsersUsecaseImpl implements GetAllUsersUsecase {
     private final UserRepository repository;
 
     public GetAllUsersUsecaseImpl(UserRepository repository) {

@@ -10,7 +10,7 @@ import com.erosnox.seeurun.application.utils.UserUtils;
 
 import java.util.UUID;
 
-public class GrantAdminRoleUsecaseImpl implements GrantAdminRoleUsecase {
+public final class GrantAdminRoleUsecaseImpl implements GrantAdminRoleUsecase {
     private final UserRepository repository;
 
     public GrantAdminRoleUsecaseImpl(UserRepository repository) {
