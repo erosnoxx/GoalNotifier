@@ -1,5 +1,6 @@
 package com.erosnox.seeurun.infrastructure.persistence.entities;
 
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.domain.entities.GoalEntity;
 import com.erosnox.seeurun.infrastructure.persistence.entities.common.BaseJpaEntity;
 import jakarta.persistence.*;
@@ -21,6 +22,9 @@ public class GoalJpaEntity extends BaseJpaEntity<UUID> {
     private String description;
     @Column(name = "target_datetime", nullable = false)
     private LocalDateTime targetDateTime;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private GoalStatus status;
     private boolean completed;
 
     @Column(name = "user_id", nullable = false)

@@ -1,9 +1,7 @@
 package com.erosnox.seeurun.presentation.controllers;
 
-import com.erosnox.seeurun.application.contracts.usecases.goals.CreateGoalUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.GetAllGoalsUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.GetGoalUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.ToggleCompletedUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.*;
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.application.models.request.goal.GoalRequest;
 import com.erosnox.seeurun.application.models.response.goal.GoalResponse;
 import com.erosnox.seeurun.infrastructure.config.security.SecurityUtils;
@@ -28,6 +26,8 @@ public class GoalController {
     private ToggleCompletedUsecase toggleCompletedUsecase;
     @Autowired
     private GetGoalUsecase getGoalUsecase;
+    @Autowired
+    private GetAllByStatusUsecase getAllByStatusUsecase;
 
     @PostMapping
     public ResponseEntity<ApiSchema<GoalResponse>> createGoal(
@@ -58,6 +58,16 @@ public class GoalController {
         var response =  getGoalUsecase.execute(id, userId, currentUser);
         var links =  getLinks(response.id(), userId);
         return ApiResponseFactory.ok(response, links, "Goal retrieved successfully");
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<List<GoalResponse>> getAllGoalsStatus(
+            @RequestParam GoalStatus status,
+            @PathVariable UUID userId) {
+        var currentUser = SecurityUtils.getCurrentUser();
+        var response = getAllByStatusUsecase.execute(userId, status, currentUser);
+
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/{id}")

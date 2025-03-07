@@ -1,5 +1,6 @@
 package com.erosnox.seeurun.domain.entities;
 
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.domain.entities.common.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ public class GoalEntity extends BaseEntity<UUID> {
     private String title;
     private String description;
     private LocalDateTime targetDateTime;
+    private GoalStatus status;
     private boolean completed;
 
     private UUID userId;
@@ -21,6 +23,7 @@ public class GoalEntity extends BaseEntity<UUID> {
         setTitle(title);
         setDescription(description);
         setTargetDateTime(targetDateTime);
+        setStatus(GoalStatus.PEDING);
         setCompleted(false);
         setUserId(userId);
     }
@@ -61,6 +64,13 @@ public class GoalEntity extends BaseEntity<UUID> {
         this.targetDateTime = targetDateTime;
     }
 
+    public void setStatus(GoalStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException("Status cannot be null");
+        }
+        this.status = status;
+    }
+
     public void setCompleted(boolean completed) {
         if (completed != this.completed) {
             this.completed = completed;
@@ -95,5 +105,9 @@ public class GoalEntity extends BaseEntity<UUID> {
 
     public UUID getUserId() {
         return userId;
+    }
+
+    public GoalStatus getStatus() {
+        return status;
     }
 }

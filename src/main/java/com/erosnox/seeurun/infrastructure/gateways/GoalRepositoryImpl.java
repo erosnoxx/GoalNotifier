@@ -1,6 +1,7 @@
 package com.erosnox.seeurun.infrastructure.gateways;
 
 import com.erosnox.seeurun.application.contracts.gateways.GoalRepository;
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.domain.entities.GoalEntity;
 import com.erosnox.seeurun.infrastructure.mappers.GoalJpaMapper;
 import com.erosnox.seeurun.infrastructure.persistence.repositories.GoalJpaRepository;
@@ -51,5 +52,11 @@ public class GoalRepositoryImpl implements GoalRepository {
     @Override
     public void delete(GoalEntity goal) {
 
+    }
+
+    @Override
+    public List<GoalEntity> findAllByStatus(UUID userId, GoalStatus status) {
+        return repository.findAllByStatusAndUserId(status, userId).stream()
+                .map(GoalJpaMapper::toEntity).collect(Collectors.toList());
     }
 }

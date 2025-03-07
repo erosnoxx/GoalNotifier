@@ -1,5 +1,6 @@
 package com.erosnox.seeurun.application.contracts.gateways;
 
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.domain.entities.GoalEntity;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface GoalRepository {
     Optional<GoalEntity> findByTitle(String title, UUID userId);
     List<GoalEntity> findAll(UUID userId);
     void delete(GoalEntity goal);
+    List<GoalEntity> findAllByStatus(UUID userId, GoalStatus status);
 }

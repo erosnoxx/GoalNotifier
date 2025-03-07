@@ -11,6 +11,7 @@ public class GoalJpaMapper {
         entity.setTargetDateTime(goal.getTargetDateTime());
         entity.setCompleted(goal.isCompleted());
         entity.setUserId(goal.getUserId());
+        entity.setStatus(goal.getStatus());
 
         return entity;
     }
@@ -22,7 +23,9 @@ public class GoalJpaMapper {
                 jpaEntity.getTargetDateTime(),
                 jpaEntity.getUserId());
         entity.setCompleted(jpaEntity.isCompleted());
+        entity.setStatus(jpaEntity.getStatus());
         entity.setId(jpaEntity.getId());
         return entity;
     }
 }
+

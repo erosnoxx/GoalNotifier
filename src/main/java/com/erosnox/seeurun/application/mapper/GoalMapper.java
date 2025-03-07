@@ -1,5 +1,6 @@
 package com.erosnox.seeurun.application.mapper;
 
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.application.models.request.goal.GoalRequest;
 import com.erosnox.seeurun.application.models.response.goal.GoalResponse;
 import com.erosnox.seeurun.domain.entities.GoalEntity;
@@ -13,6 +14,7 @@ public class GoalMapper {
                 goal.getTitle(),
                 goal.getDescription(),
                 goal.getTargetDateTime(),
+                goal.getStatus(),
                 goal.isCompleted());
     }
 
@@ -21,7 +23,6 @@ public class GoalMapper {
                 request.title(),
                 request.description(),
                 request.targetDateTime(),
-                userId
-        );
+                userId);
     }
 }

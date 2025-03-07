@@ -6,17 +6,11 @@ import com.erosnox.seeurun.application.contracts.services.CryptService;
 import com.erosnox.seeurun.application.contracts.services.LoginService;
 import com.erosnox.seeurun.application.contracts.usecases.auth.LoginUsecase;
 import com.erosnox.seeurun.application.contracts.usecases.auth.RegisterUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.CreateGoalUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.GetAllGoalsUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.GetGoalUsecase;
-import com.erosnox.seeurun.application.contracts.usecases.goals.ToggleCompletedUsecase;
+import com.erosnox.seeurun.application.contracts.usecases.goals.*;
 import com.erosnox.seeurun.application.contracts.usecases.user.*;
 import com.erosnox.seeurun.application.usecases.auth.LoginUsecaseImpl;
 import com.erosnox.seeurun.application.usecases.auth.RegisterUsecaseImpl;
-import com.erosnox.seeurun.application.usecases.goal.CreateGoalUsecaseImpl;
-import com.erosnox.seeurun.application.usecases.goal.GetAllGoalsUsecaseImpl;
-import com.erosnox.seeurun.application.usecases.goal.GetGoalUsecaseImpl;
-import com.erosnox.seeurun.application.usecases.goal.ToggleCompletedUsecaseImpl;
+import com.erosnox.seeurun.application.usecases.goal.*;
 import com.erosnox.seeurun.application.usecases.user.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -88,5 +82,10 @@ public class InjectionConfig {
     @Bean
     public GetGoalUsecase getGoalUsecase(GoalRepository repository) {
         return new GetGoalUsecaseImpl(repository);
+    }
+
+    @Bean
+    public GetAllByStatusUsecase getAllByStatusUsecase(GoalRepository repository) {
+        return new GetAllByStatusUsecaseImpl(repository);
     }
 }

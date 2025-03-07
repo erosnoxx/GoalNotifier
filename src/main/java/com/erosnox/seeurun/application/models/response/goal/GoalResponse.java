@@ -1,5 +1,6 @@
 package com.erosnox.seeurun.application.models.response.goal;
 
+import com.erosnox.seeurun.application.enums.GoalStatus;
 import com.erosnox.seeurun.application.models.response.user.UserResponse;
 
 import java.time.LocalDateTime;
@@ -10,5 +11,6 @@ public record GoalResponse(
         String title,
         String description,
         LocalDateTime targetDateTime,
+        GoalStatus status,
         boolean completed) {
 }
