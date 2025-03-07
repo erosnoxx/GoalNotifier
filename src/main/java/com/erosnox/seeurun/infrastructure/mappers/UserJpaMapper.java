@@ -10,6 +10,7 @@ public class UserJpaMapper {
         entity.setPasswordHash(user.getPasswordHash());
         entity.setRole(user.getRole());
         entity.setActive(user.isActive());
+        entity.setEmail(user.getEmail());
 
         return entity;
     }
@@ -18,6 +19,7 @@ public class UserJpaMapper {
         var entity = new UserEntity(
                 userJpaEntity.getUsername(),
                 userJpaEntity.getPasswordHash(),
+                userJpaEntity.getEmail(),
                 userJpaEntity.getRole()
         );
 

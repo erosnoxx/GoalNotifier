@@ -23,6 +23,8 @@ public class UserJpaEntity extends BaseJpaEntity<UUID> implements UserDetails {
     private String username;
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
+    @Column(unique = true)
+    private String email;
     @Column(nullable = false)
     private RolesEnum role;
     @Column(name = "is_active", nullable = false)

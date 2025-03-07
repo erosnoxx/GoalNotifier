@@ -6,7 +6,7 @@ import com.erosnox.seeurun.domain.entities.common.BaseEntity;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class GoalEntity extends BaseEntity<UUID> {
+public class GoalResponse extends BaseEntity<UUID> {
     private String title;
     private String description;
     private LocalDateTime targetDateTime;
@@ -15,7 +15,11 @@ public class GoalEntity extends BaseEntity<UUID> {
 
     private UUID userId;
 
-    public GoalEntity(
+    public boolean hasPassedTargetDateTime() {
+        return targetDateTime.isBefore(LocalDateTime.now());
+    }
+
+    public GoalResponse(
             String title,
             String description,
             LocalDateTime targetDateTime,
@@ -23,7 +27,7 @@ public class GoalEntity extends BaseEntity<UUID> {
         setTitle(title);
         setDescription(description);
         setTargetDateTime(targetDateTime);
-        setStatus(GoalStatus.PEDING);
+        setStatus(GoalStatus.PENDING);
         setCompleted(false);
         setUserId(userId);
     }
@@ -55,10 +59,6 @@ public class GoalEntity extends BaseEntity<UUID> {
     public void setTargetDateTime(LocalDateTime targetDateTime) {
         if (targetDateTime == null) {
             throw new IllegalArgumentException("TargetDateTime cannot be null");
-        }
-
-        if (targetDateTime.isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("TargetDateTime cannot be before current date");
         }
 
         this.targetDateTime = targetDateTime;

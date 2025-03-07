@@ -22,7 +22,7 @@ public final class GetAllGoalsUsecaseImpl implements GetAllGoalsUsecase {
     public List<GoalResponse> execute(UUID userId, UserDto currentUser) {
         UserUtils.isUserAllowed(userId, currentUser);
 
-        return repository.findAll(userId).stream()
+        return repository.findAllByUserId(userId).stream()
                 .map(GoalMapper::toResponse).collect(Collectors.toList());
     }
 }

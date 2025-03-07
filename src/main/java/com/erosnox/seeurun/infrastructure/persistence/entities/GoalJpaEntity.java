@@ -1,7 +1,6 @@
 package com.erosnox.seeurun.infrastructure.persistence.entities;
 
 import com.erosnox.seeurun.application.enums.GoalStatus;
-import com.erosnox.seeurun.domain.entities.GoalEntity;
 import com.erosnox.seeurun.infrastructure.persistence.entities.common.BaseJpaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

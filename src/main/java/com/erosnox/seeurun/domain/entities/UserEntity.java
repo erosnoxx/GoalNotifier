@@ -9,15 +9,18 @@ import java.util.UUID;
 public class UserEntity extends BaseEntity<UUID> {
     private String username;
     private String passwordHash;
+    private String email;
     private RolesEnum role;
     private boolean isActive;
 
     public UserEntity(
             String username,
             String passwordHash,
+            String email,
             RolesEnum role) {
         setUsername(username);
         setPasswordHash(passwordHash);
+        setEmail(email);
         setRole(role);
         setActive(true);
     }
@@ -34,6 +37,14 @@ public class UserEntity extends BaseEntity<UUID> {
             throw new IllegalArgumentException("Invalid password");
         }
         this.passwordHash = passwordHash;
+    }
+
+    public void setEmail(String email) {
+        if (!EntityUtils.isValidEmail(email)) {
+            throw new IllegalArgumentException("Invalid email");
+        }
+
+        this.email = email;
     }
 
     public void setRole(RolesEnum role) {
@@ -60,5 +71,7 @@ public class UserEntity extends BaseEntity<UUID> {
         return isActive;
     }
 
-
+    public String getEmail() {
+        return email;
+    }
 }

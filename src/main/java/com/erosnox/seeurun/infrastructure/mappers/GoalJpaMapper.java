@@ -1,10 +1,10 @@
 package com.erosnox.seeurun.infrastructure.mappers;
 
-import com.erosnox.seeurun.domain.entities.GoalEntity;
+import com.erosnox.seeurun.domain.entities.GoalResponse;
 import com.erosnox.seeurun.infrastructure.persistence.entities.GoalJpaEntity;
 
 public class GoalJpaMapper {
-    public static GoalJpaEntity toJpa(GoalEntity goal) {
+    public static GoalJpaEntity toJpa(GoalResponse goal) {
         var entity = new GoalJpaEntity();
         entity.setTitle(goal.getTitle());
         entity.setDescription(goal.getDescription());
@@ -16,8 +16,8 @@ public class GoalJpaMapper {
         return entity;
     }
 
-    public static GoalEntity toEntity(GoalJpaEntity jpaEntity) {
-        var entity = new GoalEntity(
+    public static GoalResponse toEntity(GoalJpaEntity jpaEntity) {
+        var entity = new GoalResponse(
                 jpaEntity.getTitle(),
                 jpaEntity.getDescription(),
                 jpaEntity.getTargetDateTime(),

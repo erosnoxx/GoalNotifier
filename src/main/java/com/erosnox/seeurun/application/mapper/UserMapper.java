@@ -10,6 +10,7 @@ public class UserMapper {
         return new UserResponse(
                 user.getId(),
                 user.getUsername(),
+                user.getEmail(),
                 user.getRole(),
                 user.isActive());
     }
@@ -18,6 +19,7 @@ public class UserMapper {
         return new UserEntity(
                 request.username(),
                 passwordHash,
+                request.email(),
                 request.role()
         );
     }
